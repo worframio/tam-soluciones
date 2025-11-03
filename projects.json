@@ -3,12 +3,14 @@
     "estado": "En curso",
     "titulo": "Supervisión de obra — 2 semanas",
     "descripcion": "Control de calidad, seguridad y coordinación con contratistas.",
-    "detalles": "<ul><li>Coordinación diaria con contratistas</li><li>Checklist de seguridad</li><li>Informe de avance semanal</li></ul>"
+    "detalles": "<ul><li>Checklist de seguridad</li><li>Informe de avance semanal</li></ul>",
+    "fecha": "2025-11-03"
   },
   {
     "estado": "Próximo",
     "titulo": "Digitalización de planos eléctricos",
     "descripcion": "Normalización de esquemas, legajo digital y trazabilidad de cambios.",
-    "detalles": "<ul><li>Vectorización y estandarización</li><li>Identificación de tableros/circuitos</li><li>Entrega en PDF y DWG</li></ul>"
+    "detalles": "<ul><li>Vectorización</li><li>Identificación de circuitos</li><li>Entrega en PDF y DWG</li></ul>",
+    "fecha": "2025-11-03"
   }
 ]

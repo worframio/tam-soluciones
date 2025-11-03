@@ -46,21 +46,22 @@
     .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
     .card h3{margin:0 0 6px;font-size:1rem}
     .card p{margin:0;color:#475569;font-size:.98rem}
+    .project-meta{display:flex; gap:10px; align-items:center; color:#64748b; font-size:.9rem; margin-top:6px}
     .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
     input,textarea{width:100%;padding:12px 14px;border:1px solid var(--ring);border-radius:12px;font:inherit} 
     textarea{min-height:120px}
     .btn{background:#0f172a;color:#fff;padding:12px 16px;border:none;border-radius:12px;font-weight:800;cursor:pointer}
     footer{border-top:1px solid var(--ring);padding:24px 0;color:#64748b;font-size:.92rem}
+    .socials{display:flex; gap:12px; align-items:center}
+    .socials a{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; border:1px solid var(--ring)}
     #topBtn{position: fixed; right: 16px; bottom: 16px; width: 44px; height: 44px; border: none; border-radius: 999px; background: #0f172a; color: #fff; font-size: 20px; font-weight: 700; box-shadow: 0 6px 24px rgba(0,0,0,.15); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s ease;}
     #topBtn:hover{ filter: brightness(0.95); }
-    /* Expandable project card */
     .proj{cursor:pointer; position:relative}
     .proj .more{max-height:0; overflow:hidden; transition:max-height .25s ease}
     .proj.open .more{max-height:240px}
     .proj h3{display:flex; align-items:center; justify-content:space-between}
     .chev{transition:transform .2s ease; opacity:.7; margin-left:8px}
     .proj.open .chev{transform:rotate(180deg)}
-    /* Clients grid */
     .clients{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px}
     .client{border:1px solid var(--ring); border-radius:14px; padding:14px; background:#fff; text-align:center; color:#334155; font-weight:700}
     @media (max-width:960px){ .hero-wrap{grid-template-columns:1fr} .hero-card{grid-template-columns:1fr} .grid3{grid-template-columns:1fr 1fr} .grid2{grid-template-columns:1fr} .contact{grid-template-columns:1fr} .nav a{padding:6px 8px} .clients{grid-template-columns:repeat(2,minmax(0,1fr))} }
@@ -140,16 +141,11 @@
     </div>
   </section>
 
-  <section id="clientes">
+  <section id="clientes" style="display:none">
     <div class="container">
       <h2 class="section-title">Clientes</h2>
       <p class="section-sub">Confían en TAM para sus proyectos electromecánicos.</p>
-      <div class="clients" id="clients-grid">
-        <div class="client">Bodega Ejemplo A</div>
-        <div class="client">Planta Industrial B</div>
-        <div class="client">Metalúrgica C</div>
-        <div class="client">Logística D</div>
-      </div>
+      <div class="clients" id="clients-grid"></div>
     </div>
   </section>
 
@@ -158,7 +154,6 @@
       <div>
         <h2 class="section-title">Contacto</h2>
         <p class="section-sub">Dejanos tu consulta y coordinamos una visita técnica.</p>
-        <!-- FormSubmit -->
         <form action="https://formsubmit.co/tamsolucioneselectromecanicas@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="Nueva consulta — Sitio TAM">
           <input type="hidden" name="_next" value="https://worframio.github.io/tam-soluciones/gracias.html">
@@ -171,8 +166,6 @@
           <textarea name="detalle" placeholder="Breve descripción del proyecto" required></textarea>
           <button class="btn" type="submit">Enviar consulta</button>
           <p class="section-sub">También podés escribir a <a href="mailto:tamsolucioneselectromecanicas@gmail.com">tamsolucioneselectromecanicas@gmail.com</a> o WhatsApp <a href="https://wa.me/5492615754465" target="_blank" rel="noopener">+5492615754465</a>.</p>
-          <p class="section-sub" style="font-size:.85rem;color:#94a3b8">Si ves un error 405, reenviá con el botón de email o probá en otro navegador.</p>
-          <div style="margin-top:8px"><a class="btn" style="background:#334155" href="mailto:tamsolucioneselectromecanicas@gmail.com?subject=Consulta%20desde%20la%20web%20TAM">Enviar por email</a></div>
         </form>
       </div>
       <div class="card" style="background:var(--card)">
@@ -199,15 +192,24 @@
         <input name="servicio" placeholder="Servicio (instalación/mantenimiento/otro)" />
         <textarea name="detalle" placeholder="Descripción técnica (potencias, tableros, planos)"></textarea>
         <button class="btn" type="submit">Solicitar presupuesto</button>
-        <div style="margin-top:8px"><a class="btn" style="background:#334155" href="mailto:tamsolucioneselectromecanicas@gmail.com?subject=Presupuesto%20desde%20la%20web%20TAM">Enviar por email</a></div>
       </form>
     </div>
   </section>
 
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
       <span>© <span id="y"></span> TAM Soluciones Electromecánicas</span>
-      <span style="color:#64748b">Calidad · Seguridad · Precisión</span>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/tam-soluciones-electromec%C3%A1nica/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://wa.me/5492615754465" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="1.8"><path d="M21.5 12a9.5 9.5 0 0 1-13.3 8.7L3 21l.3-5.2A9.5 9.5 0 1 1 21.5 12z"/><path d="M8.5 12.5c1.5 2.6 4 4 5.5 4 .7 0 1.5-.5 1.8-1.2l.2-.5-1.7-1.1c-.2-.1-.4-.1-.6.1l-.4.4c-.3.3-.8.3-1.1 0-1-.7-1.9-1.6-2.6-2.6-.3-.3-.3-.8 0-1.1l.4-.4c.2-.2.2-.4.1-.6l-1.1-1.7-.5.2c-.7.3-1.2 1.1-1.2 1.8 0 .3 0 .6.2.9z"/></svg>
+        </a>
+        <a href="mailto:tamsolucioneselectromecanicas@gmail.com" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -216,32 +218,69 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
     const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {{
       topBtn.style.opacity = window.scrollY > 400 ? '1' : '0';
       topBtn.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
-    });
-    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }});
+    topBtn.addEventListener('click', () => window.scrollTo({{ top: 0, behavior: 'smooth' }}));
 
-    // Render proyectos (expandibles)
-    fetch('projects.json', {cache: 'no-store'})
+    const MONTHS = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    function formatFecha(iso) {{
+      try {{
+        const d = new Date(iso + "T00:00:00");
+        return `📅 ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+      }} catch (_e) {{ return ""; }}
+    }}
+    function isFutureOrToday(iso) {{
+      if(!iso) return true;
+      const today = new Date(); today.setHours(0,0,0,0);
+      const d = new Date(iso + "T00:00:00");
+      return d >= today;
+    }}
+
+    fetch('projects.json', {{cache: 'no-store'}})
       .then(r => r.json())
-      .then(items => {
+      .then(items => {{
         const grid = document.getElementById('proyectos-grid');
-        items.forEach((p, idx) => {
-          const el = document.createElement('article');
-          el.className = 'card proj';
-          el.innerHTML = `
-            <h3>${p.estado ? '• ' + p.estado + ' — ' : ''}${p.titulo}
-              <span class="chev">▼</span>
-            </h3>
-            <p>${p.descripcion}</p>
-            <div class="more">${p.detalles ? p.detalles : ''}</div>
-          `;
-          el.addEventListener('click', () => el.classList.toggle('open'));
-          grid.appendChild(el);
-        });
-      })
-      .catch(() => {});
+        items
+          .filter(p => isFutureOrToday(p.fecha))
+          .forEach((p) => {{
+            const el = document.createElement('article');
+            el.className = 'card proj';
+            el.innerHTML = `
+              <h3>${{p.estado ? '• ' + p.estado + ' — ' : ''}}${{p.titulo}}
+                <span class="chev">▼</span>
+              </h3>
+              <div class="project-meta">${{p.fecha ? formatFecha(p.fecha) : ''}}</div>
+              <p>${{p.descripcion}}</p>
+              <div class="more">${{p.detalles ? p.detalles : ''}}</div>
+            `;
+            el.addEventListener('click', () => el.classList.toggle('open'));
+            grid.appendChild(el);
+          }});
+      }})
+      .catch(() => {{}});
+
+    fetch('clients.json', {{cache: 'no-store'}})
+      .then(r => r.json())
+      .then(items => {{
+        const section = document.getElementById('clientes');
+        const grid = document.getElementById('clients-grid');
+        if (Array.isArray(items) && items.length > 0) {{
+          items.forEach(c => {{
+            const el = document.createElement('div');
+            el.className = 'client';
+            el.textContent = c.nombre || c;
+            grid.appendChild(el);
+          }});
+          section.style.display = "";
+        }} else {{
+          section.style.display = "none";
+        }}
+      }})
+      .catch(() => {{
+        document.getElementById('clientes').style.display = "none";
+      }});
   </script>
 </body>
 </html>
