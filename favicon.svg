@@ -1,6 +1,26 @@
-
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
-  <rect width='64' height='64' rx='12' fill='#111'/>
-  <circle cx='32' cy='32' r='18' fill='#333'/>
-  <path d='M36 12 L22 36 L30 36 L26 52 L44 28 L34 28 Z' fill='#ff7a00'/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      .gear { fill: #39424E; }  /* gris oscuro corporativo */
+      .bolt { fill: #ff7a00; }  /* naranja corporativo */
+      .core { fill: #ffffff; }  /* centro blanco para contraste */
+    </style>
+  </defs>
+  <!-- Gear with simplified teeth for crisp rendering at small sizes -->
+  <g class="gear">
+    <circle cx="32" cy="32" r="22"/>
+    <!-- Teeth -->
+    <rect x="30" y="4"  width="4" height="9" rx="1.2"/>
+    <rect x="30" y="51" width="4" height="9" rx="1.2"/>
+    <rect x="4"  y="30" width="9" height="4" rx="1.2"/>
+    <rect x="51" y="30" width="9" height="4" rx="1.2"/>
+    <rect x="9.5" y="9.5" width="8" height="4" rx="1.2" transform="rotate(-45 13.5 11.5)"/>
+    <rect x="46.5" y="49.5" width="8" height="4" rx="1.2" transform="rotate(-45 50.5 51.5)"/>
+    <rect x="46.5" y="9.5" width="8" height="4" rx="1.2" transform="rotate(45 50.5 11.5)"/>
+    <rect x="9.5" y="46.5" width="8" height="4" rx="1.2" transform="rotate(45 13.5 48.5)"/>
+  </g>
+  <circle class="core" cx="32" cy="32" r="12"/>
+  <!-- Lightning bolt simplified for tiny sizes -->
+  <path class="bolt" d="M37 10 L23 34 H31 L26 54 L45 28 L35 28 Z"/>
 </svg>
