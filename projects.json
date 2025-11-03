@@ -6,7 +6,7 @@
     "descripcion": "Supervisión técnica y control de calidad en obra industrial.",
     "detalles": "<ul><li>Duración: 2 semanas</li><li>Checklist de seguridad</li><li>Informe de avance semanal</li></ul>",
     "fecha_inicio": "2025-11-04",
-    "fecha_fin": ""
+    "fecha_fin": "2025-11-18"
   },
   {
     "estado": "Próximo",
@@ -14,6 +14,6 @@
     "descripcion": "Normalización de esquemas y legajo digital de planos eléctricos existentes.",
     "detalles": "<ul><li>Vectorización y revisión de circuitos</li><li>Entrega en formatos PDF y DWG</li><li>Duración estimada: 1 semana</li></ul>",
     "fecha_inicio": "2025-11-10",
-    "fecha_fin": ""
+    "fecha_fin": "2025-11-14"
   }
 ]
