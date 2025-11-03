@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TAM Soluciones Electromecánicas</title>
   <meta name="description" content="Instalaciones eléctricas industriales, mantenimiento electromecánico, supervisión de obras y digitalización de planos eléctricos." />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=3">
-    href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22" fill="%23333"/><path d="M36 10 L22 36 L31 36 L26 54 L44 28 L34 28 Z" fill="%23ff7a00"/></svg>'>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=12">
   <meta property="og:title" content="TAM Soluciones Electromecánicas">
   <meta property="og:description" content="Instalaciones eléctricas, mantenimiento, supervisión de obras y digitalización de planos eléctricos.">
   <meta property="og:type" content="website">
@@ -14,7 +13,7 @@
   <meta property="og:url" content="https://worframio.github.io/tam-soluciones/">
   <style>
     :root{ --ink:#0f172a; --muted:#64748b; --ring:#e2e8f0; --card:#f8fafc; --accent:#ff7a00; --headerH:72px; }
-    *{box-sizing:border-box} html,body{margin:0} 
+    *{box-sizing:border-box} html,body{margin:0}
     html{ scroll-behavior:smooth; }
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--ink);background:#fff;}
     a{color:inherit;text-decoration:none}
@@ -48,12 +47,12 @@
     .card p{margin:0;color:#475569;font-size:.98rem}
     .project-meta{display:flex; gap:10px; align-items:center; color:#64748b; font-size:.9rem; margin-top:6px}
     .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
-    input,textarea{width:100%;padding:12px 14px;border:1px solid var(--ring);border-radius:12px;font:inherit} 
+    input,textarea{width:100%;padding:12px 14px;border:1px solid var(--ring);border-radius:12px;font:inherit}
     textarea{min-height:120px}
     .btn{background:#0f172a;color:#fff;padding:12px 16px;border:none;border-radius:12px;font-weight:800;cursor:pointer}
     footer{border-top:1px solid var(--ring);padding:24px 0;color:#64748b;font-size:.92rem}
     .socials{display:flex; gap:12px; align-items:center}
-    .socials a{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; border:1px solid var(--ring)}
+    .socials a{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; border:1px solid var(--ring); position:relative; z-index:1; pointer-events:auto;}
     #topBtn{position: fixed; right: 16px; bottom: 16px; width: 44px; height: 44px; border: none; border-radius: 999px; background: #0f172a; color: #fff; font-size: 20px; font-weight: 700; box-shadow: 0 6px 24px rgba(0,0,0,.15); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s ease;}
     #topBtn:hover{ filter: brightness(0.95); }
     .proj{cursor:pointer; position:relative}
@@ -218,69 +217,69 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
     const topBtn = document.getElementById('topBtn');
-    window.addEventListener('scroll', () => {{
-      topBtn.style.opacity = window.scrollY > 400 ? '1' : '0';
-      topBtn.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
-    }});
-    topBtn.addEventListener('click', () => window.scrollTo({{ top: 0, behavior: 'smooth' }}));
+    window.addEventListener('scroll', () => {
+      const show = window.scrollY > 150;
+      topBtn.style.opacity = show ? '1' : '0';
+      topBtn.style.pointerEvents = show ? 'auto' : 'none';
+    });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     const MONTHS = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-    function formatFecha(iso) {{
-      try {{
+    function formatFecha(iso) {
+      try {
         const d = new Date(iso + "T00:00:00");
         return `📅 ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
-      }} catch (_e) {{ return ""; }}
-    }}
-    function isFutureOrToday(iso) {{
+      } catch (_e) { return ""; }
+    }
+    function isFutureOrToday(iso) {
       if(!iso) return true;
       const today = new Date(); today.setHours(0,0,0,0);
       const d = new Date(iso + "T00:00:00");
       return d >= today;
-    }}
-
-    fetch('projects.json', {{cache: 'no-store'}})
+    }
+    fetch('projects.json', {cache: 'no-store'})
       .then(r => r.json())
-      .then(items => {{
+      .then(items => {
         const grid = document.getElementById('proyectos-grid');
         items
           .filter(p => isFutureOrToday(p.fecha))
-          .forEach((p) => {{
+          .forEach((p) => {
             const el = document.createElement('article');
             el.className = 'card proj';
             el.innerHTML = `
-              <h3>${{p.estado ? '• ' + p.estado + ' — ' : ''}}${{p.titulo}}
+              <h3>${p.estado ? '• ' + p.estado + ' — ' : ''}${p.titulo}
                 <span class="chev">▼</span>
               </h3>
-              <div class="project-meta">${{p.fecha ? formatFecha(p.fecha) : ''}}</div>
-              <p>${{p.descripcion}}</p>
-              <div class="more">${{p.detalles ? p.detalles : ''}}</div>
+              <div class="project-meta">${p.fecha ? formatFecha(p.fecha) : ''}</div>
+              <p>${p.descripcion}</p>
+              <div class="more">${p.detalles ? p.detalles : ''}</div>
             `;
             el.addEventListener('click', () => el.classList.toggle('open'));
             grid.appendChild(el);
-          }});
-      }})
-      .catch(() => {{}});
+          });
+      })
+      .catch(() => {});
 
-    fetch('clients.json', {{cache: 'no-store'}})
+    fetch('clients.json', {cache: 'no-store'})
       .then(r => r.json())
-      .then(items => {{
+      .then(items => {
         const section = document.getElementById('clientes');
         const grid = document.getElementById('clients-grid');
-        if (Array.isArray(items) && items.length > 0) {{
-          items.forEach(c => {{
+        if (Array.isArray(items) && items.length > 0) {
+          items.forEach(c => {
             const el = document.createElement('div');
             el.className = 'client';
             el.textContent = c.nombre || c;
             grid.appendChild(el);
-          }});
+          });
           section.style.display = "";
-        }} else {{
+        } else {
           section.style.display = "none";
-        }}
-      }})
-      .catch(() => {{
+        }
+      })
+      .catch(() => {
         document.getElementById('clientes').style.display = "none";
-      }});
+      });
   </script>
 </body>
 </html>
