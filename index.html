@@ -37,7 +37,8 @@
     h1{font-size:clamp(26px,6vw,44px);line-height:1.08;margin:0 0 10px}
     .lead{font-size:clamp(15px,3.5vw,18px);color:#475569;margin:0 0 16px}
     .hero-card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .card{background:#fff;border:1px solid var(--ring);border-radius:16px;padding:16px}
+    .card{background:#fff;border:1px solid var(--ring);border-radius:16px;padding:16px;transition:box-shadow .2s ease, transform .2s ease;}
+    .card:hover{box-shadow:0 6px 20px rgba(2, 6, 23, 0.08); transform: translateY(-1px);}
     .stamp{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#065f46;background:#ecfdf5;border:1px solid #d1fae5;padding:6px 10px;border-radius:999px;margin-bottom:8px}
     .section-title{font-size:clamp(20px,4.8vw,30px);margin:0 0 8px}
     .section-sub{color:var(--muted);margin:0 0 16px}
@@ -48,12 +49,22 @@
     .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
     input,textarea{width:100%;padding:12px 14px;border:1px solid var(--ring);border-radius:12px;font:inherit} 
     textarea{min-height:120px}
-    .btn{background:#0f172a;color:#fff;padding:12px 16px;border:none;border-radius:12px;font-weight:800}
+    .btn{background:#0f172a;color:#fff;padding:12px 16px;border:none;border-radius:12px;font-weight:800;cursor:pointer}
     footer{border-top:1px solid var(--ring);padding:24px 0;color:#64748b;font-size:.92rem}
     #topBtn{position: fixed; right: 16px; bottom: 16px; width: 44px; height: 44px; border: none; border-radius: 999px; background: #0f172a; color: #fff; font-size: 20px; font-weight: 700; box-shadow: 0 6px 24px rgba(0,0,0,.15); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s ease;}
     #topBtn:hover{ filter: brightness(0.95); }
-    @media (max-width:960px){ .hero-wrap{grid-template-columns:1fr} .hero-card{grid-template-columns:1fr} .grid3{grid-template-columns:1fr 1fr} .grid2{grid-template-columns:1fr} .contact{grid-template-columns:1fr} .nav a{padding:6px 8px} }
-    @media (max-width:560px){ .grid3{grid-template-columns:1fr} .nav{height:66px} .cta{padding:9px 12px} :root{--headerH:66px} }
+    /* Expandable project card */
+    .proj{cursor:pointer; position:relative}
+    .proj .more{max-height:0; overflow:hidden; transition:max-height .25s ease}
+    .proj.open .more{max-height:240px}
+    .proj h3{display:flex; align-items:center; justify-content:space-between}
+    .chev{transition:transform .2s ease; opacity:.7; margin-left:8px}
+    .proj.open .chev{transform:rotate(180deg)}
+    /* Clients grid */
+    .clients{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px}
+    .client{border:1px solid var(--ring); border-radius:14px; padding:14px; background:#fff; text-align:center; color:#334155; font-weight:700}
+    @media (max-width:960px){ .hero-wrap{grid-template-columns:1fr} .hero-card{grid-template-columns:1fr} .grid3{grid-template-columns:1fr 1fr} .grid2{grid-template-columns:1fr} .contact{grid-template-columns:1fr} .nav a{padding:6px 8px} .clients{grid-template-columns:repeat(2,minmax(0,1fr))} }
+    @media (max-width:560px){ .grid3{grid-template-columns:1fr} .nav{height:66px} .cta{padding:9px 12px} :root{--headerH:66px} .clients{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
@@ -74,7 +85,7 @@
               <rect x="11" y="45" width="8" height="4" rx="1.5" transform="rotate(45 15 47)"/>
             </g>
             <circle cx="32" cy="32" r="12" fill="#ffffff"/>
-            <path d="M37 10 L23 34 H31 L26 54 L45 28 L35 Z" fill="#ff7a00"/>
+            <path d="M37 10 L23 34 H31 L26 54 L45 28 L35 28 Z" fill="#ff7a00"/>
           </svg>
           <div class="t"><strong>TAM</strong><span>Soluciones Electromecánicas</span></div>
         </a>
@@ -82,6 +93,7 @@
       <nav>
         <a href="#servicios">Servicios</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="#clientes">Clientes</a>
         <a href="#contacto">Contacto</a>
         <a class="cta" href="#presupuesto">Pedir presupuesto</a>
       </nav>
@@ -123,8 +135,21 @@
   <section id="proyectos">
     <div class="container">
       <h2 class="section-title">Proyectos</h2>
-      <p class="section-sub">Experiencia aplicada en obra y documentación técnica.</p>
+      <p class="section-sub">Hacé clic en cada tarjeta para ver más detalles.</p>
       <div id="proyectos-grid" class="grid2"></div>
+    </div>
+  </section>
+
+  <section id="clientes">
+    <div class="container">
+      <h2 class="section-title">Clientes</h2>
+      <p class="section-sub">Confían en TAM para sus proyectos electromecánicos.</p>
+      <div class="clients" id="clients-grid">
+        <div class="client">Bodega Ejemplo A</div>
+        <div class="client">Planta Industrial B</div>
+        <div class="client">Metalúrgica C</div>
+        <div class="client">Logística D</div>
+      </div>
     </div>
   </section>
 
@@ -133,6 +158,7 @@
       <div>
         <h2 class="section-title">Contacto</h2>
         <p class="section-sub">Dejanos tu consulta y coordinamos una visita técnica.</p>
+        <!-- FormSubmit -->
         <form action="https://formsubmit.co/tamsolucioneselectromecanicas@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="Nueva consulta — Sitio TAM">
           <input type="hidden" name="_next" value="https://worframio.github.io/tam-soluciones/gracias.html">
@@ -145,6 +171,8 @@
           <textarea name="detalle" placeholder="Breve descripción del proyecto" required></textarea>
           <button class="btn" type="submit">Enviar consulta</button>
           <p class="section-sub">También podés escribir a <a href="mailto:tamsolucioneselectromecanicas@gmail.com">tamsolucioneselectromecanicas@gmail.com</a> o WhatsApp <a href="https://wa.me/5492615754465" target="_blank" rel="noopener">+5492615754465</a>.</p>
+          <p class="section-sub" style="font-size:.85rem;color:#94a3b8">Si ves un error 405, reenviá con el botón de email o probá en otro navegador.</p>
+          <div style="margin-top:8px"><a class="btn" style="background:#334155" href="mailto:tamsolucioneselectromecanicas@gmail.com?subject=Consulta%20desde%20la%20web%20TAM">Enviar por email</a></div>
         </form>
       </div>
       <div class="card" style="background:var(--card)">
@@ -171,6 +199,7 @@
         <input name="servicio" placeholder="Servicio (instalación/mantenimiento/otro)" />
         <textarea name="detalle" placeholder="Descripción técnica (potencias, tableros, planos)"></textarea>
         <button class="btn" type="submit">Solicitar presupuesto</button>
+        <div style="margin-top:8px"><a class="btn" style="background:#334155" href="mailto:tamsolucioneselectromecanicas@gmail.com?subject=Presupuesto%20desde%20la%20web%20TAM">Enviar por email</a></div>
       </form>
     </div>
   </section>
@@ -192,15 +221,23 @@
       topBtn.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
     });
     topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Render proyectos (expandibles)
     fetch('projects.json', {cache: 'no-store'})
       .then(r => r.json())
       .then(items => {
         const grid = document.getElementById('proyectos-grid');
-        items.forEach(p => {
+        items.forEach((p, idx) => {
           const el = document.createElement('article');
-          el.className = 'card';
-          el.innerHTML = `<h3>${p.estado ? '• ' + p.estado + ' — ' : ''}${p.titulo}</h3>
-                          <p>${p.descripcion}</p>`;
+          el.className = 'card proj';
+          el.innerHTML = `
+            <h3>${p.estado ? '• ' + p.estado + ' — ' : ''}${p.titulo}
+              <span class="chev">▼</span>
+            </h3>
+            <p>${p.descripcion}</p>
+            <div class="more">${p.detalles ? p.detalles : ''}</div>
+          `;
+          el.addEventListener('click', () => el.classList.toggle('open'));
           grid.appendChild(el);
         });
       })
