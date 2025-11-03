@@ -5,217 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TAM Soluciones Electromecánicas</title>
   <meta name="description" content="Instalaciones eléctricas industriales, mantenimiento electromecánico, supervisión de obras y digitalización de planos eléctricos." />
-  <meta property="og:title" content="TAM Soluciones Electromecánicas" />
-  <meta property="og:description" content="Soluciones electromecánicas para la industria: instalaciones, mantenimiento, supervisión y documentación técnica." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#1F2937" />
-  <style>
-    :root{
-      --bg:#ffffff;
-      --ink:#1f2937;
-      --muted:#6b7280;
-      --card:#f6f7f9;
-      --accent:#ff7a00;
-      --accent-ink:#b45309;
-      --ring:#e5e7eb;
-      --success:#16a34a;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,'Noto Sans',sans-serif;}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--ring)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
-    .logo-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:8px;background:#111}
-    .logo-svg{width:26px;height:26px;display:block}
-    .logo-text span:first-child{font-size:1.05rem}
-    .logo-text .tag{display:block;font-size:.72rem;color:var(--muted);margin-top:2px}
-    .nav a{font-weight:600;font-size:.95rem;color:#374151;padding:10px 12px;border-radius:10px}
-    .nav a:hover{background:#f3f4f6}
-    .cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;padding:12px 16px;border-radius:12px;font-weight:700}
-    .cta:hover{background:#ff6a00}
-    .hero{padding:72px 0 40px}
-    .hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
-    .kicker{display:inline-block;font-weight:700;color:var(--accent);letter-spacing:.4px;margin-bottom:10px}
-    h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0 0 14px}
-    .lead{font-size:clamp(16px,2.2vw,18px);color:#4b5563;margin:0 0 22px}
-    .hero-card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .badge{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--ring);padding:10px 12px;border-radius:12px;font-weight:700}
-    .badge small{color:var(--muted);font-weight:600}
-    section{padding:48px 0}
-    .section-title{font-size:clamp(22px,3vw,32px);margin:0 0 8px}
-    .section-sub{color:var(--muted);margin:0 0 24px}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .card{background:#fff;border:1px solid var(--ring);border-radius:16px;padding:18px;transition:transform .18s ease, box-shadow .18s ease}
-    .card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
-    .card h3{margin:0 0 8px;font-size:1.05rem}
-    .card p{margin:0;color:#4b5563}
-    .dot{font-size:1.1rem;margin-right:.45rem}
-    .projects .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .stamp{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#065f46;background:#ecfdf5;border:1px solid #d1fae5;padding:6px 10px;border-radius:999px;margin-bottom:8px}
-    .contact-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-    form{display:grid;gap:10px}
-    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--ring);font:inherit}
-    textarea{min-height:120px}
-    .btn{background:#111;color:#fff;padding:12px 16px;border:none;border-radius:12px;font-weight:800}
-    .btn:hover{background:#0b0b0b}
-    .mini{font-size:.86rem;color:var(--muted)}
-    footer{padding:32px 0;border-top:1px solid var(--ring);color:#6b7280;font-size:.9rem}
-    @media (max-width:960px){
-      .hero .wrap{grid-template-columns:1fr}
-      .hero-card{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr 1fr}
-      .projects .grid{grid-template-columns:1fr}
-      .contact-wrap{grid-template-columns:1fr}
-    }
-    @media (max-width:560px){
-      .grid{grid-template-columns:1fr}
-    }
-  </style>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <a class="logo" href="#inicio" aria-label="Inicio TAM">
-        <span class="logo-mark" aria-hidden="true">
-          <svg class="logo-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <clipPath id="g"><circle cx="32" cy="32" r="22" /></clipPath>
-            </defs>
-            <g fill="#333" clip-path="url(#g)">
-              <circle cx="32" cy="32" r="22" fill="#333"/>
-            </g>
-            <g fill="#333">
-              <rect x="30" y="4" width="4" height="10" rx="1" />
-              <rect x="30" y="50" width="4" height="10" rx="1" />
-              <rect x="4" y="30" width="10" height="4" rx="1" />
-              <rect x="50" y="30" width="10" height="4" rx="1" />
-              <rect x="11" y="11" width="10" height="4" rx="1" transform="rotate(-45 11 11)" />
-              <rect x="43" y="49" width="10" height="4" rx="1" transform="rotate(-45 43 49)" />
-              <rect x="49" y="11" width="10" height="4" rx="1" transform="rotate(45 49 11)" />
-              <rect x="11" y="43" width="10" height="4" rx="1" transform="rotate(45 11 43)" />
-            </g>
-            <path d="M36 10 L22 36 L31 36 L26 54 L44 28 L34 28 Z" fill="#ff7a00"/>
-          </svg>
-        </span>
-        <span class="logo-text"><span>TAM</span><span class="tag">Soluciones Electromecánicas</span></span>
-      </a>
-      <nav>
-        <a href="#servicios">Servicios</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-        <a class="cta" href="#contacto">Pedir presupuesto</a>
-      </nav>
-    </div>
+    <h1>TAM Soluciones Electromecánicas</h1>
+    <p>Mendoza, Argentina</p>
   </header>
-
-  <main id="inicio" class="hero">
-    <div class="container wrap">
-      <div>
-        <span class="kicker">Industria · Ingeniería · Seguridad</span>
-        <h1>Soluciones electromecánicas para instalaciones industriales</h1>
-        <p class="lead">Instalaciones eléctricas, mantenimiento integral, supervisión técnica de obras y digitalización de planos eléctricos. Enfocados en calidad, seguridad y cumplimiento normativo.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 4px">
-          <a class="cta" href="#contacto" aria-label="Contactar TAM">Contactar</a>
-          <a class="badge" href="#servicios">Ver servicios <small>5 áreas</small></a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="card">
-          <div class="stamp">• En curso</div>
-          <h3>Supervisión de obra (2 semanas)</h3>
-          <p>Coordinación técnica, control de calidad y seguridad en sitio.</p>
-        </div>
-        <div class="card">
-          <div class="stamp" style="background:#fff7ed;border-color:#ffedd5;color:#9a3412">• Próximo</div>
-          <h3>Digitalización de planos eléctricos</h3>
-          <p>Actualización y registro digital conforme a normativa vigente.</p>
-        </div>
-      </div>
-    </div>
+  <main>
+    <section>
+      <h2>Servicios</h2>
+      <ul>
+        <li>Instalaciones eléctricas industriales</li>
+        <li>Mantenimiento electromecánico</li>
+        <li>Supervisión y gestión de obras</li>
+        <li>Digitalización de planos eléctricos</li>
+        <li>Asistencia técnica especializada</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Contacto</h2>
+      <p>Email: <a href="mailto:tamsolucioneselectromecanicas@gmail.com">tamsolucioneselectromecanicas@gmail.com</a></p>
+      <p>WhatsApp: <a href="https://wa.me/5492615754465" target="_blank">+5492615754465</a></p>
+    </section>
   </main>
-
-  <section id="servicios">
-    <div class="container">
-      <h2 class="section-title">Servicios</h2>
-      <p class="section-sub">Cobertura integral para proyectos electromecánicos industriales.</p>
-      <div class="grid">
-        <article class="card">
-          <h3>Instalaciones eléctricas industriales</h3>
-          <p><span class="dot">▪️</span>Montaje y puesta en marcha de sistemas de potencia y control.</p>
-        </article>
-        <article class="card">
-          <h3>Mantenimiento electromecánico</h3>
-          <p><span class="dot">▪️</span>Preventivo, correctivo y predictivo orientado a disponibilidad.</p>
-        </article>
-        <article class="card">
-          <h3>Supervisión y gestión de obras</h3>
-          <p><span class="dot">▪️</span>Calidad, seguridad y cumplimiento normativo en campo.</p>
-        </article>
-        <article class="card">
-          <h3>Digitalización de planos eléctricos</h3>
-          <p><span class="dot">▪️</span>Elaboración, interpretación y actualización de documentación.</p>
-        </article>
-        <article class="card">
-          <h3>Asistencia técnica especializada</h3>
-          <p><span class="dot">▪️</span>Diagnóstico, soporte y puesta en servicio.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="proyectos" class="projects">
-    <div class="container">
-      <h2 class="section-title">Proyectos</h2>
-      <p class="section-sub">Experiencia aplicada en obra y documentación técnica.</p>
-      <div class="grid">
-        <article class="card">
-          <h3>Supervisión de obra – 2 semanas</h3>
-          <p>Seguimiento de avance, coordinación de equipos y control de estándares.</p>
-        </article>
-        <article class="card">
-          <h3>Digitalización de planos – En preparación</h3>
-          <p>Normalización de esquemas, legajo digital y trazabilidad de cambios.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <div class="container contact-wrap">
-      <div>
-        <h2 class="section-title">Contacto</h2>
-        <p class="section-sub">Contanos sobre tu proyecto y coordinamos una visita técnica.</p>
-        <form onsubmit="event.preventDefault(); alert('¡Gracias! Te responderemos a la brevedad.');">
-          <input placeholder="Nombre y empresa" required />
-          <input type="email" placeholder="Correo electrónico" required />
-          <input placeholder="Teléfono (opcional)" />
-          <textarea placeholder="Breve descripción del proyecto" required></textarea>
-          <button class="btn" type="submit">Enviar consulta</button>
-          <p class="mini">También podés escribir a <a href="mailto:contacto@tamsoluciones.com">contacto@tamsoluciones.com</a> o WhatsApp <a href="https://wa.me/5490000000000" target="_blank" rel="noopener">+54 9 00 0000 0000</a>.</p>
-        </form>
-      </div>
-      <div class="card" style="background:var(--card)">
-        <h3>Datos de la empresa</h3>
-        <p><strong>TAM Soluciones Electromecánicas</strong><br/>
-          Mendoza, Argentina<br/>
-          Inst. eléctricas industriales · Mantenimiento · Supervisión · Digitalización
-        </p>
-        <p class="mini">*Editá los datos de contacto y copiá este archivo a tu hosting. Es 100% responsive.</p>
-      </div>
-    </div>
-  </section>
-
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <span>© <span id="y"></span> TAM Soluciones Electromecánicas</span>
-      <span style="color:var(--muted)">Calidad · Seguridad · Precisión</span>
-    </div>
+    <p>© <script>document.write(new Date().getFullYear())</script> TAM Soluciones Electromecánicas</p>
   </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
