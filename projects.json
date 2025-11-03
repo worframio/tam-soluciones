@@ -1,0 +1,12 @@
+[
+  {
+    "estado": "En curso",
+    "titulo": "Supervisión de obra — 2 semanas",
+    "descripcion": "Control de calidad, seguridad y coordinación con contratistas."
+  },
+  {
+    "estado": "Próximo",
+    "titulo": "Digitalización de planos eléctricos",
+    "descripcion": "Normalización de esquemas, legajo digital y trazabilidad de cambios."
+  }
+]
